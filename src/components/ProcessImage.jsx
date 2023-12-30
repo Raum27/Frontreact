@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 function ProcessImage() {
   return (
     <>
+
       <div className="flex justify-center items-center ">
         <ul className="steps m-7">
           <li className="step step-error text-sm">UPLOAD</li>

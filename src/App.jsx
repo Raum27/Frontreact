@@ -1,20 +1,81 @@
-import { Link } from "react-router-dom"
-import upload_image from "./components/UPLOADIMAGE"
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
+
 
 function App() {
+  const [Images, setImages] = useState([])
+  const [FACE_LOCK, setFACE_LOCK] = useState([])
+  useEffect(() => {
+    axios.post('http://127.0.0.1:5000/All-Face').then((res) => {
+      setImages([...res.data])
+      setFACE_LOCK(Array(0).fill(0))
+    }).catch((error) => {
+      console.log(error)
+    })
+
+  }, [])
+
+
+
   return (
     <>
-      <div className="navbar bg-base-100 border-b-2 flex justify-between">
-        <h1 className="btn  btn-ghost text-gray-300 text-xl">Automated Face Selection and Censoring </h1>
-        <div >
-         <button className="btn btn-lg mx-3 ">TRY IMAGES</button>
-          <button className="btn btn-lg mx-2 ">TRY VIDEO</button>
+      <div className="flex justify-center mt-10 ">
+        <div className="overflow-x-auto bg-indigo-400 w-6/12 border-4 border-neutral-600 shadow-3xl">
+          <table className="table border-collapse">
+            {/* head */}
+            <thead>
+              <tr>
+                <th className='text-white'>
+                  FACE-LOCK
+                </th>
+                <th className='text-white'>IMAGE</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Images.map((item, index) => {
+                return <tr key={index}>
+                  <th>
+                    <label>
+                      {<input type="checkbox" key={index} className="checkbox checkbox-warning [--chkfg:white]" value={index} onClick={(e) => {
+                        if (e.target.checked == true) {
+
+                          FACE_LOCK.push(e.target.value)
+                        } else {
+                          const index = FACE_LOCK.indexOf(e.target.value);
+                          if (index > -1) {
+                            FACE_LOCK.splice(index, 1);
+                          }
+                        }
+
+                        console.log(FACE_LOCK, "length is :", FACE_LOCK.length)
+                      }} />
+                      }
+                    </label>
+                  </th>
+                  <td>
+                    <div className="flex items-center gap-3">
+                      <div className="avatar">
+                        <div className="mask mask-squircle w-12 h-12">
+                          <img src={`data:image/jpeg;base64,${item}`} key={index} />
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              })}
+
+            </tbody>
+            <tfoot>
+              <tr>
+
+              </tr>
+            </tfoot>
+
+          </table>
         </div>
       </div>
-      <img src="https://plus.unsplash.com/premium_photo-1674718013659-6930c469e641?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="NOne" />
     </>
   )
 }
 
 export default App
-//<img src="https://plus.unsplash.com/premium_photo-1674718013659-6930c469e641?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="NOne" />

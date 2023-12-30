@@ -10,6 +10,7 @@ function UPLOADVIDEO() {
   const handleFileChange = (e) => {
     const newFile = e.target.files[0];
     setVideoFILE(newFile)
+    
     setSelectedFile(<video width={720} height={250} controls className="border-solid border-red-500 border-4 shadow-3xl ">
       <source src={URL.createObjectURL(newFile)} key={newFile.name} type={newFile.type} />
     </video>)
