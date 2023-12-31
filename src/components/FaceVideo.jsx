@@ -1,14 +1,12 @@
 import axios from 'axios'
 import React, { useState } from 'react';
-import zom from '../assets/zom.gif'
+import Loading from './Loading'
 
 function FaceVideo({ Filter, FACE_LOCK }) {
-  // const [loading, setLoading] = useState(false);
 
   const handleDowload = async () => {
-    // setLoading(true);
-    window.scrollTo(0, 0)
-    alert("This Process may spend time , please wait!")
+    // window.scrollTo(0, 0)
+    document.getElementById('my_modal_1').showModal()
     const formData = new FormData();
     if (Filter != null) {
       formData.append('filterImage', Filter);
@@ -28,6 +26,7 @@ function FaceVideo({ Filter, FACE_LOCK }) {
   }
   return (
     <>
+    {<Loading/>}
       <div className="flex justify-center items-center mt-auto">
         <button className="btn btn-error w-500 text-lg text-zinc-100" onClick={handleDowload}>PROCESS</button>
       </div>

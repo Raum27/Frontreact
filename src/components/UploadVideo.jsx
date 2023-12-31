@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import zom from '../assets/zom.gif'
+// import zom from '../assets/zom.gif'
 import axios from 'axios'
+import Loading from './Loading';
 
 function UPLOADVIDEO() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [VideoFILE, setVideoFILE] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   const handleFileChange = (e) => {
     const newFile = e.target.files[0];
@@ -17,9 +17,8 @@ function UPLOADVIDEO() {
   };
 
   const handleUpload = async () => {
-    setLoading(true);
-    window.scrollTo(0, 0)
-    alert("This Process may spend time , please wait!")
+    // window.scrollTo(0, 0)
+    document.getElementById('my_modal_1').showModal()
     const formData = new FormData();
     formData.append('Ve_file', VideoFILE);
     try {
@@ -37,10 +36,12 @@ function UPLOADVIDEO() {
   };
 
   return (
-    <>{loading &&
-      <div className="h-screen bg-gray-600 relative fixed flex justify-center">
-        <img src={zom} width={750} height={200} />
-      </div>}
+    <>{
+      // <div className="h-screen bg-gray-600 relative fixed flex justify-center">
+      //   <img src={zom} width={750} height={200} />
+      // </div>
+      <Loading />
+      }
       <div className="flex justify-center items-center ">
         <ul className="steps m-7">
           <li className="step step-error text-lg font-bold">UPLOAD</li>

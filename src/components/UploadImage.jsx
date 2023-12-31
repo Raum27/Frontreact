@@ -1,12 +1,10 @@
-import { Link } from "react-router-dom";
 import React, { useState } from 'react';
 import axios from 'axios'
-import zom from '../assets/zom.gif'
+import Loading from './Loading';
 
 function UPLOADIMAGE() {
   const [selectedFiles, setSelectedFiles] = useState(null);
   const [IMAGES, setImages] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   const handleFileChange = (e) => {
     setSelectedFiles(e.target.files);
@@ -15,9 +13,7 @@ function UPLOADIMAGE() {
 
   };
   const handleUpload = async () => {
-    setLoading(true);
-    window.scrollTo(0, 0)
-    alert("This Process may spend time , please wait!")
+    document.getElementById('my_modal_1').showModal()
     const formData = new FormData();
     for (const file of selectedFiles) {
       formData.append('files', file);
@@ -36,7 +32,6 @@ function UPLOADIMAGE() {
       //   location.href = '/ProcessImage';
       // }
 
-      // ProcessImage
     } catch (error) {
       console.error('Error uploading files:', error);
     }
@@ -44,10 +39,7 @@ function UPLOADIMAGE() {
 
   return (
     <>
-      {loading &&
-        <div className="h-screen bg-gray-600 relative fixed flex justify-center">
-          <img src={zom} width={750} height={200} />
-        </div>}
+      {<Loading/>}
       <div className="flex justify-center items-center ">
         <ul className="steps m-7">
           <li className="step step-error text-lg font-bold ">UPLOAD</li>

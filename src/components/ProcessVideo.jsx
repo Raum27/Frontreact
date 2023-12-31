@@ -90,7 +90,7 @@ function ProcessVideo() {
       </div>
       <div className='flex justify-center  my-2'>
         <span className='mr-6 mt-2'><h1 className='font-mono text-lg font-semibold'>Filter-file --&gt;</h1></span>
-        <input type="file" className="file-input file-input-bordered file-input-error w-full max-w-xs mr-4" onChange={upfiles} />
+        <input type="file" accept='image/png' className="file-input file-input-bordered file-input-error w-full max-w-xs mr-4" onChange={upfiles} />
         <FaceVideo Filter={selectedFilefilter} FACE_LOCK={FACE_LOCK} />
       </div>
 
