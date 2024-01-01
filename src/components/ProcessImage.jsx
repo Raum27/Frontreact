@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import Loading from './Loading'
 
-function FaceImage() {
+function FaceImage({ip}) {
   const [Images, setImages] = useState([])
   const [BOXS, setbox] = useState([])
   const [FIlter, setFIlter] = useState([])
   const [FACE_LOCK, setFACE_LOCK] = useState([])
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:5000/FacesAllonImages').then((res) => {
+    axios.get(`${ip}/FacesAllonImages`).then((res) => {
       if (res.status == 200) {
         const info = res.data
         
@@ -123,7 +123,7 @@ function FaceImage() {
           // formData.append('who', FACE_LOCK)
 
           try {
-            axios.post('http://127.0.0.1:5000/LockFacesImages', formData).then((res) => {
+            axios.post(`${ip}/LockFacesImages`, formData).then((res) => {
               if (res.status == 200) {
                 location.href = '/DOWLOADIMAGE';
               }

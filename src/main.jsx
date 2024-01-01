@@ -20,7 +20,7 @@ import UPLOADVIDEO from './components/UploadVideo.jsx';
 import DOWLOADVIDEO from './components/DOWLOADVIDEO.jsx';
 import ProcessVideo from './components/ProcessVideo.jsx';
 
-
+const ipaddress = 'http://127.0.0.1:5000'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,27 +28,27 @@ const router = createBrowserRouter([
   },
   {
     path: "/UPLOADIMAGE",
-    element:<UPLOADIMAGE></UPLOADIMAGE>,
+    element:<UPLOADIMAGE ip={ipaddress}></UPLOADIMAGE>,
   },
   {
     path: "/ProcessImage",
-    element:<ProcessImage></ProcessImage>,
+    element:<ProcessImage ip={ipaddress}></ProcessImage>,
   },
   {
     path: "/DOWLOADIMAGE",
-    element:<DOWLOADIMAGE></DOWLOADIMAGE>,
+    element:<DOWLOADIMAGE ip={ipaddress}></DOWLOADIMAGE>,
   },
   {
     path: "/UPLOADVIDEO",
-    element:<UPLOADVIDEO></UPLOADVIDEO>,
+    element:<UPLOADVIDEO ip={ipaddress}></UPLOADVIDEO>,
   },
   {
     path: "/DOWLOADVIDEO",
-    element:<DOWLOADVIDEO></DOWLOADVIDEO>,
+    element:<DOWLOADVIDEO ip={ipaddress}></DOWLOADVIDEO>,
   },
   {
     path: "/ProcessVideo",
-    element:<ProcessVideo></ProcessVideo>,
+    element:<ProcessVideo ip={ipaddress}></ProcessVideo>,
   },
 ]);
 

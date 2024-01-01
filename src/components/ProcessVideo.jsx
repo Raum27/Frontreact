@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import FaceVideo from './FaceVideo';
 
-function ProcessVideo() {
+function ProcessVideo({ip}) {
   const [Images, setImages] = useState([])
   const [FACE_LOCK, setFACE_LOCK] = useState([])
   const [selectedFilefilter, setselectedFilefilter] = useState(null);
 
   useEffect(() => {
-    axios.post('http://127.0.0.1:5000/All-Face').then((res) => {
+    axios.post(`${ip}/All-Face`).then((res) => {
       if (res.status == 200) {
         setImages([...res.data])
         setFACE_LOCK(Array(0).fill(0))
@@ -93,7 +93,7 @@ function ProcessVideo() {
         <div className='tooltip'  data-tip="Select the filter that you want to replace the video instead of censoring by default.">
           <input type="file" accept='image/png' className="file-input file-input-bordered file-input-error w-full max-w-xs mr-4 " onChange={upfiles} />
         </div>
-        <FaceVideo Filter={selectedFilefilter} FACE_LOCK={FACE_LOCK} />
+        <FaceVideo Filter={selectedFilefilter} FACE_LOCK={FACE_LOCK} ip={ip}/>
 
       </div>
 

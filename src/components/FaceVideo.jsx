@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react';
 import Loading from './Loading'
 
-function FaceVideo({ Filter, FACE_LOCK }) {
+function FaceVideo({ Filter, FACE_LOCK, ip }) {
 
   const handleDowload = async () => {
     // window.scrollTo(0, 0)
@@ -13,7 +13,7 @@ function FaceVideo({ Filter, FACE_LOCK }) {
     }
     formData.append('who',FACE_LOCK);
     try {
-      await axios.post('http://127.0.0.1:5000/Facelocks', formData).then((res) => {
+      await axios.post(`${ip}/Facelocks`, formData).then((res) => {
         if (res.status == 200) {
           location.href = '/DOWLOADVIDEO';
         }

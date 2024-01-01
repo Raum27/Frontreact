@@ -3,7 +3,7 @@ import axios from 'axios'
 import Loading from './Loading';
 import PapgNoFace from './PapgNoFace';
 
-function UPLOADIMAGE() {
+function UPLOADIMAGE({ ip }) {
   const [selectedFiles, setSelectedFiles] = useState(null);
   const [IMAGES, setImages] = useState([]);
 
@@ -21,7 +21,7 @@ function UPLOADIMAGE() {
       formData.append('files', file);
     }
     try {
-      await axios.post('http://127.0.0.1:5000/UpFilesImages', formData).then((res) => {
+      await axios.post(`${ip}/UpFilesImages`, formData).then((res) => {
         if (res.status == 200) {
 
           if (res.data['status'] === "No faces or human on images") {
@@ -49,7 +49,7 @@ function UPLOADIMAGE() {
 
   return (
     <>
-      {checkpage && <PapgNoFace/>}
+      {checkpage && <PapgNoFace />}
       {<Loading />}
       <div className="flex justify-center items-center ">
         <ul className="steps m-7">
@@ -59,28 +59,35 @@ function UPLOADIMAGE() {
         </ul>
       </div>
       <div className="flex justify-center items-center mt-auto">
-        <input type="file" accept="image/*" multiple className="file-input file-input-bordered w-full max-w-xs" onChange={handleFileChange} />
+        <input type="file" accept=".png, .jpg, .jpeg" multiple className="file-input file-input-bordered w-full max-w-xs" onChange={handleFileChange} />
       </div>
-      {/*  images */}
-      {selectedFiles &&
-        <div className="flex justify-center mt-2 ">
-          <div className="border-4 border-rose-500 h-1/4 carousel carousel-center max-w-md p-4 space-x-4 bg-neutral rounded-box ">
-            <div className="carousel-item ">
-              {IMAGES.map((file, index) => {
-                return <img
-                  key={index}
-                  src={URL.createObjectURL(file)}
-                  alt={`selected-img-${index}`}
-                  className="rounded-box object-cover"
-                  width={500} height={150}
 
-                />
-              })}
+
+      <div className='container mx-auto px-4 mt-3 '>
+        {selectedFiles &&
+          <div className="flex justify-center mt-2 ">
+            <div className="border-4 border-rose-500 h-1/4 carousel carousel-center max-w-md p-4 space-x-4 bg-neutral rounded-box ">
+              <div className="carousel-item ">
+                {IMAGES.map((file, index) => {
+                  return <img
+                    key={index}
+                    src={URL.createObjectURL(file)}
+                    alt={`selected-img-${index}`}
+                    className="rounded-box object-cover"
+                    width={500} height={150}
+
+                  />
+                })}
+              </div>
             </div>
           </div>
-        </div>
-      }
-      {/*  images */}
+        }
+
+      </div>
+     
+
+
+      {/*  upload image */}
       {selectedFiles &&
         <div className="flex justify-center items-center mt-10 tooltip"  data-tip="upload image files to server">
           <button className="btn btn-error w-500 text-lg text-zinc-100" onClick={handleUpload}>UPLOAD</button>

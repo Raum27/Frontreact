@@ -3,7 +3,7 @@ import axios from 'axios'
 import Loading from './Loading';
 import PapgNoFace from './PapgNoFace';
 
-function UPLOADVIDEO() {
+function UPLOADVIDEO({ip}) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [VideoFILE, setVideoFILE] = useState(null);
 
@@ -23,7 +23,7 @@ function UPLOADVIDEO() {
     const formData = new FormData();
     formData.append('Ve_file', VideoFILE);
     try {
-      await axios.post('http://127.0.0.1:5000/UpFilesVideo', formData).then((res) => {
+      await axios.post(`${ip}/UpFilesVideo`, formData).then((res) => {
         if (res.status == 200) {
 
           if (res.data['status'] === "No faces or humen on video") {
