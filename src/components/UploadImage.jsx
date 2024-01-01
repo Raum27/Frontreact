@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import Loading from './Loading';
+import PapgNoFace from './PapgNoFace';
 
 function UPLOADIMAGE() {
   const [selectedFiles, setSelectedFiles] = useState(null);
   const [IMAGES, setImages] = useState([]);
 
+  const [checkpage, setcheckpage] = useState(false);
   const handleFileChange = (e) => {
     setSelectedFiles(e.target.files);
     const files = Array.from(e.target.files);
@@ -21,7 +23,15 @@ function UPLOADIMAGE() {
     try {
       await axios.post('http://127.0.0.1:5000/UpFilesImages', formData).then((res) => {
         if (res.status == 200) {
-          location.href = '/ProcessImage';
+
+          if (res.data['status'] === "No faces or human on images") {
+            setcheckpage(true)
+            document.getElementById('my_modal_1').close()
+
+          } else {
+            location.href = '/ProcessImage';
+          }
+
         }
       }).catch((error) => {
         console.log(error)
@@ -39,7 +49,8 @@ function UPLOADIMAGE() {
 
   return (
     <>
-      {<Loading/>}
+      {checkpage && <PapgNoFace/>}
+      {<Loading />}
       <div className="flex justify-center items-center ">
         <ul className="steps m-7">
           <li className="step step-error text-lg font-bold ">UPLOAD</li>
@@ -71,7 +82,7 @@ function UPLOADIMAGE() {
       }
       {/*  images */}
       {selectedFiles &&
-        <div className="flex justify-center items-center mt-10">
+        <div className="flex justify-center items-center mt-10 tooltip"  data-tip="upload image files to server">
           <button className="btn btn-error w-500 text-lg text-zinc-100" onClick={handleUpload}>UPLOAD</button>
         </div>
       }

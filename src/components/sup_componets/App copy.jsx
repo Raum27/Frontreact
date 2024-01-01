@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
-import Loading from './Loading'
 
-function FaceImage() {
+
+function App() {
   const [Images, setImages] = useState([])
   const [BOXS, setbox] = useState([])
   const [FIlter, setFIlter] = useState([])
@@ -12,11 +12,6 @@ function FaceImage() {
     axios.get('http://127.0.0.1:5000/FacesAllonImages').then((res) => {
       if (res.status == 200) {
         const info = res.data
-        
-        if (Object.keys(info).length === 0) {
-
-          location.href = '/UPLOADIMAGE';
-        }
         setImages(info)
         let size = Object.keys(info).length;
         let arr = []
@@ -33,7 +28,7 @@ function FaceImage() {
           newArray.push(newRow);
         }
         setFACE_LOCK(newArray)
-        // console.log(newArray)
+        console.log(newArray)
 
       }
 
@@ -45,7 +40,6 @@ function FaceImage() {
 
   return (
     <>
-      {<Loading />}
       {/* bar */}
       <div className="flex justify-center items-center ">
         <ul className="steps m-7">
@@ -66,8 +60,7 @@ function FaceImage() {
                   <div key={`in1${index_in}`} className="w-20 rounded ">
                     <img key={`in2${index_in}`} src={`data:image/jpeg;base64,${item}`} alt="Tailwind-CSS-Avatar-component" />
                   </div>
-                  <input key={`in3${index_in}`} type="checkbox" className="checkbox mt-2 ml-6 tooltip "  data-tip="LOCK" 
-                  value={index_in} onClick={(e) => {
+                  <input key={`in3${index_in}`} type="checkbox" className="checkbox mt-2 ml-6" value={index_in} onClick={(e) => {
 
                     // console.log('index ',index,' value', e.target.value)
                     // console.log(FACE_LOCK)
@@ -80,19 +73,19 @@ function FaceImage() {
                       }
 
                     }
-                    // console.log(FACE_LOCK)
+                    console.log(FACE_LOCK)
                   }} />
                 </div>
               })}
 
             </div>
           </div>
-          <div key={`h${index}`} className='flex justify-center  my-2 tooltip' data-tip="Select the filter that you want to replace the video instead of censoring by default.">
+          <div key={`h${index}`} className='flex justify-center  my-2'>
             <span className='mr-6 mt-2' key={`x${index}`}><h1 className='font-mono text-lg font-semibold'>Filter {index + 1} &gt;</h1></span>
             <input type="file" id={`fi${index}`} key={`s${index}`} accept='image/png' onChange={(e) => {
               const file_filter = e.target.files[0]
               FIlter[index] = file_filter
-              // console.log(FIlter[index], FIlter)
+              console.log(FIlter[index], FIlter)
             }} className="file-input file-input-bordered file-input-error w-full max-w-xs mr-4" />
           </div>
         </div>
@@ -104,21 +97,22 @@ function FaceImage() {
 
       <div className="flex justify-center items-center mt-auto">
         <button className="btn btn-error w-500 text-lg text-zinc-100" onClick={() => {
-          document.getElementById('my_modal_1').showModal()
           const formData = new FormData();
           for (const file of FIlter) {
             formData.append('files', file);
           }
-
+        
           const want_fill = []
           for (let k = 0; k < FIlter.length; ++k) {
             if (FIlter[k] != null) {
               want_fill.push(k)
+            }else{
+              want_fill.push(-1)
             }
           }
 
-          formData.append('who', JSON.stringify(FACE_LOCK))
-          formData.append('want_lock', JSON.stringify(want_fill))
+          formData.append('who',JSON.stringify(FACE_LOCK))
+          formData.append('want_lock',JSON.stringify(want_fill))
           // console.log(want_fill,JSON.stringify(FACE_LOCK))
           // formData.append('who', FACE_LOCK)
 
@@ -140,4 +134,4 @@ function FaceImage() {
   );
 }
 
-export default FaceImage;
+export default App;

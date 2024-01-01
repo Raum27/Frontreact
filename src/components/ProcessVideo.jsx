@@ -39,23 +39,23 @@ function ProcessVideo() {
         </ul>
       </div>
       <div className="flex justify-center mt-2 mb-2 ">
-        <div className="overflow-x-auto bg-indigo-400 w-6/12 border-4 border-neutral-600 shadow-3xl">
+        <div className="overflow-x-auto bg-slate-300 border-slate-100 w-6/12 border-4 border-neutral-600 shadow-3xl">
           <table className="table border-collapse">
             {/* head */}
             <thead>
               <tr>
-                <th className='text-white'>
+                <th className='text-black font-bold'>
                   FACE-LOCK
                 </th>
-                <th className='text-white'>IMAGE</th>
+                <th className='text-black font-bold'>IMAGE</th>
               </tr>
             </thead>
             <tbody>
               {Images.map((item, index) => {
                 return <tr key={index}>
                   <th>
-                    <label>
-                      {<input type="checkbox" key={index} className="checkbox checkbox-warning [--chkfg:white]" value={index} onClick={(e) => {
+                    <label className='tooltip tooltip-right' data-tip="LOCK">
+                      {<input type="checkbox" key={index} className="checkbox " value={index} onClick={(e) => {
                         if (e.target.checked == true) {
                           FACE_LOCK.push(e.target.value)
                         } else {
@@ -88,10 +88,13 @@ function ProcessVideo() {
           </table>
         </div>
       </div>
-      <div className='flex justify-center  my-2'>
-        <span className='mr-6 mt-2'><h1 className='font-mono text-lg font-semibold'>Filter-file --&gt;</h1></span>
-        <input type="file" accept='image/png' className="file-input file-input-bordered file-input-error w-full max-w-xs mr-4" onChange={upfiles} />
+      <div className='flex justify-center  my-2 mt-4'>
+        <span className='mr-6 mt-2'><h1 className='font-mono text-lg font-semibold' >Filter-file --&gt;</h1></span>
+        <div className='tooltip'  data-tip="Select the filter that you want to replace the video instead of censoring by default.">
+          <input type="file" accept='image/png' className="file-input file-input-bordered file-input-error w-full max-w-xs mr-4 " onChange={upfiles} />
+        </div>
         <FaceVideo Filter={selectedFilefilter} FACE_LOCK={FACE_LOCK} />
+
       </div>
 
     </>
