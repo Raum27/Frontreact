@@ -29,7 +29,7 @@ function Home() {
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl font-bold">Video :)</h1>
-            <p className="mb-5">don't waste your time. Try your video with this Automated Face Selection and Censoring</p>
+            <p className="mb-5">Don't! waste your time. Try your video with Automated Face Selection and Censoring</p>
             <Link to="/UPLOADVIDEO"><button className="btn btn-error">Start video</button></Link>
           </div>
         </div>

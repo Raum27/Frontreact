@@ -55,7 +55,7 @@ function ProcessVideo({ip}) {
                 return <tr key={index}>
                   <th>
                     <label className='tooltip tooltip-right' data-tip="LOCK">
-                      {<input type="checkbox" key={index} className="checkbox " value={index} onClick={(e) => {
+                      {<input type="checkbox" key={index} className="checkbox" value={index} onClick={(e) => {
                         if (e.target.checked == true) {
                           FACE_LOCK.push(e.target.value)
                         } else {

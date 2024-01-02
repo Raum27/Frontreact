@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios'
 import Loading from './Loading';
 import PapgNoFace from './PapgNoFace';
+import { Carousel } from 'flowbite-react';
 
 function UPLOADIMAGE({ ip }) {
   const [selectedFiles, setSelectedFiles] = useState(null);
@@ -63,33 +64,31 @@ function UPLOADIMAGE({ ip }) {
       </div>
 
 
-      <div className='container mx-auto px-4 mt-3 '>
-        {selectedFiles &&
-          <div className="flex justify-center mt-2 ">
-            <div className="border-4 border-rose-500 h-1/4 carousel carousel-center max-w-md p-4 space-x-4 bg-neutral rounded-box ">
-              <div className="carousel-item ">
-                {IMAGES.map((file, index) => {
-                  return <img
-                    key={index}
-                    src={URL.createObjectURL(file)}
-                    alt={`selected-img-${index}`}
-                    className="rounded-box object-cover"
-                    width={500} height={150}
-
-                  />
-                })}
-              </div>
-            </div>
-          </div>
-        }
-
+      <div className='flex justify-center '>
+        <div className="bg-slate-200 border-slate-100 bg-gray-800 h-96 mt-5 size-6/12 w-6/12 shadow-3xl rounded-2xl">
+          <Carousel slideInterval={1000}>
+            {selectedFiles &&
+              IMAGES.map((file, index) => {
+                return (<img
+                  key={index}
+                  src={URL.createObjectURL(file)}
+                  alt={`selected-img-${index}`}
+                  width={250} height={400}
+                />
+                )
+              })}
+          </Carousel>
+        </div>
       </div>
-     
+
+
+
+
 
 
       {/*  upload image */}
       {selectedFiles &&
-        <div className="flex justify-center items-center mt-10 tooltip"  data-tip="upload image files to server">
+        <div className="flex justify-center items-center mt-10 tooltip" data-tip="upload image files to server">
           <button className="btn btn-error w-500 text-lg text-zinc-100" onClick={handleUpload}>UPLOAD</button>
         </div>
       }

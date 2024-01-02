@@ -20,7 +20,7 @@ import UPLOADVIDEO from './components/UploadVideo.jsx';
 import DOWLOADVIDEO from './components/DOWLOADVIDEO.jsx';
 import ProcessVideo from './components/ProcessVideo.jsx';
 
-const ipaddress = 'http://25.44.183.18:5000'
+const ipaddress = 'http://127.0.0.1:5000'
 const router = createBrowserRouter([
   {
     path: "/",
