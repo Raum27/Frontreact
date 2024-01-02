@@ -119,7 +119,7 @@ function FaceImage({ip}) {
 
           formData.append('who', JSON.stringify(FACE_LOCK))
           formData.append('want_lock', JSON.stringify(want_fill))
-          // console.log(want_fill,JSON.stringify(FACE_LOCK))
+          console.log(want_fill,JSON.stringify(FACE_LOCK),JSON.stringify(want_fill))
           // formData.append('who', FACE_LOCK)
 
           try {

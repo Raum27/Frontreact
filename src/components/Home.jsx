@@ -12,18 +12,7 @@ function Home() {
           <Link to="/UPLOADVIDEO"><button className="btn btn-error btn-lg mx-2 text-zinc-100" >TRY VIDEO</button></Link>
         </div>
       </div>
-      <div className="flex flex-col  container px-4 mt-3  border-4">
-        <div className="grid h-20 card bg-base-300 rounded-box place-items-center">
-
-          <div className="flex w-full">
-            <div className="grid h-20 flex-grow card bg-base-300 rounded-box place-items-center">content</div>
-            <div className="divider divider-horizontal">OR</div>
-            <div className="grid h-20 flex-grow card bg-base-300 rounded-box place-items-center">content</div>
-          </div>
-        </div>
-        <div className="divider"></div>
-        <div className="grid h-20 card bg-base-300 rounded-box place-items-center">content</div>
-      </div>
+      <img src="https://plus.unsplash.com/premium_photo-1674718013659-6930c469e641?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="NOne" />
     </>
   )
 }
