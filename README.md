@@ -25,9 +25,8 @@ In this project, we create a website with React and a server with Python. My pro
 ## Download page
 ![ezgif com-resize](https://github.com/Raum27/Frontreact/assets/107095362/c5229c6f-5b95-49dd-a0a7-942623d22b7a)
 ![ezgif-5-999dc75bb4](https://github.com/Raum27/Frontreact/assets/107095362/7b450ce6-1d57-46ca-9fef-ba6628ecd7e6)
+
+
 The only boy in the video is an excepted person.
 
-
-## results
-![image](https://github.com/Raum27/Frontreact/assets/107095362/9edecca1-2188-48ad-835a-f92fa6fd3f43)
 
