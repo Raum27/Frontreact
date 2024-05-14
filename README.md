@@ -1,3 +1,23 @@
-THis project we create wedsite with react and the server with python. 
+THis project we create website with react and the server with python. My project about prevents Personal information with using AI for censoring and locked person's face whom you want.
 
-![first page]([[[http://url/to/img.png](https://github.com/Raum27/Frontreact/blob/main/image/1.png)](https://raw.githubusercontent.com/Raum27/Frontreact/main/image/1.png?token=GHSAT0AAAAAACRB5ERHEETLIKZPREKPAPREZSC2JLQ)](https://github.com/Raum27/Frontreact/blob/main/image/1.png?raw=true))
+### Home Page
+![alt text](image-2.png)
+![alt text](image.png)
+
+## Upload files page
+![alt text](image-3.png)
+![alt text](image-4.png)
+
+## Image task page
+![alt text](image-5.png)
+![alt text](image-6.png)
+
+## Video task page
+![alt text](image-8.png)
+![alt text](image-9.png)
+
+## Loading page
+![alt text](image-11.png)
+
+## Download page
+![alt text](image-10.png)
