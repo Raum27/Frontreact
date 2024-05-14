@@ -23,6 +23,9 @@ In this project, we create a website with React and a server with Python. My pro
 
 
 ## Download page
+![image](https://github.com/Raum27/Frontreact/assets/107095362/e1033707-fa7e-4d26-b520-8b5bda6bea60)
+
+## results
 ![ezgif com-resize](https://github.com/Raum27/Frontreact/assets/107095362/c5229c6f-5b95-49dd-a0a7-942623d22b7a)
 ![ezgif-5-999dc75bb4](https://github.com/Raum27/Frontreact/assets/107095362/7b450ce6-1d57-46ca-9fef-ba6628ecd7e6)
 
